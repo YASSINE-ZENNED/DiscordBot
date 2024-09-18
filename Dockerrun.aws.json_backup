@@ -1,0 +1,16 @@
+{
+    "AWSEBDockerrunVersion": "1",
+    "Command": "docker build -t bot-image .",
+    "Image": {
+        "Name": "Dockerfile",
+        "Update": "true"
+    },
+    "Logging": "/var/log/nginx",
+    "Ports": [
+        {
+            "ContainerPort": 80,
+            "HostPort": 80
+        }
+    ],
+    "Volumes": []
+}

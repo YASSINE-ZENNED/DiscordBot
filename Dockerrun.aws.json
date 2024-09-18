@@ -1,0 +1,38 @@
+{
+    "AWSEBDockerrunVersion": "2",
+    "containerDefinitions": [
+        {
+            "name": "discord-songs-bot",
+            "image": "573520634310.dkr.ecr.eu-central-1.amazonaws.com/disco-song-bot:latest",
+            "essential": true,
+            "memory": 512,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "mountPoints": [
+                {
+                    "containerPath": "/var/log/nginx",
+                    "sourceVolume": "awseb-logs-disco-bot"
+                }
+            ]
+        }
+    ],
+    "platform": {
+        "platformName": "Docker",
+        "platformVersion": "1.4.0"
+    },
+    "executionRoleArn": "arn:aws:iam::573520634310:role/ecs-execution-role-discord-bot",
+    "taskRoleArn": "arn:aws:iam::573520634310:role/role-name",
+    "ecsConfiguration": {
+        "ecsClusterName": "discord-songs-bot",
+        "serviceRoleArn": "arn:aws:iam::573520634310:role/discord-bot-task-role",
+        "taskDefinition": {
+            "taskLevel": {
+                "computePlatform": "FARGATE"
+            }
+        }
+    }
+}
